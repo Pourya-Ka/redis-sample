@@ -19,11 +19,17 @@ public class RedisApplication {
         return args -> {
             Student student = new Student("id1", "pourya", "Karimi", "Bitmospher@gmail.com");
             Student student1 = new Student("id2", "HamidReza", "Karimi", "Bitmospher3@gmail.com");
+
             repository.save(student);
             repository.save(student1);
-            System.out.println(repository.findAll());
+            System.out.println("add: " + repository.findAll());
+
             repository.deleteById("id1");
-            System.out.println(repository.findAll());
+            System.out.println("delete: " + repository.findAll());
+
+            student1.setEmail("test@gmail.com");
+            repository.save(student1);
+            System.out.println("update:" + repository.findAll());
         };
     }
 }
